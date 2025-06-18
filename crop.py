@@ -1,7 +1,6 @@
 '''
 획득한 이미지의 전처리과정
-수동 크롭 진행
-
+측정 부위 수동으로 크롭 진행
 '''
 import cv2
 import os
@@ -11,7 +10,7 @@ image_folder = r'C:\Users\박영욱\OneDrive\바탕 화면\preprocessing\taeyeon
 output_folder = os.path.join(image_folder, 'crops')
 os.makedirs(output_folder, exist_ok=True)
 
-CROP_WIDTH = 180
+CROP_WIDTH = 180 
 CROP_HEIGHT = 256
 
 image_files = sorted([f for f in os.listdir(image_folder) if f.lower().endswith(('.jpg', '.png', '.jpeg'))])
@@ -78,7 +77,8 @@ for i, file in enumerate(image_files):
             cv2.imencode('.png', crop)[1].tofile(save_path)
             print(f"✅ Saved: {save_path}")
             crop_count += 1
-     
+
+        # N과 ESC 눌러 각 역할 진행
         elif key == ord('n') or key == ord('N'):  
             print("➡️ 다음 이미지로 이동")
             break
